@@ -45,9 +45,10 @@ export function registerReviewRoutes(app: FastifyInstance): void {
       throw new InvalidDiffError('Diff is missing or empty');
     }
 
-    // Verify it looks like a unified diff (must contain diff headers/markers)
-    const hasDiffHeaders = diff.includes('diff --git ') || diff.includes('diff ') || (diff.includes('--- ') && diff.includes('+++ '));
-    if (!hasDiffHeaders) {
+    // Verify it looks like a unified diff (must contain hunk header and diff headers)
+    const hasHunkHeader = /^@@\s+-\d+(?:,\d+)?\s+\+\d+(?:,\d+)?\s+@@/m.test(diff);
+    const hasDiffHeaders = diff.includes('diff --git ') || (diff.includes('--- ') && diff.includes('+++ '));
+    if (!hasHunkHeader || !hasDiffHeaders) {
       throw new InvalidDiffError('Diff is missing, empty, or not a valid unified diff');
     }
 
