@@ -58,6 +58,14 @@ npm start
 | `GET` | `/v1/reviews/:id` | ✅ | Poll review status and results |
 | `GET` | `/v1/reviews/:id/stream` | ✅ | SSE stream for real-time progress |
 
+## Production Keep-Alive (Render Free Tier)
+
+Since Render's free tier spins down the application after 15 minutes of inactivity, we use a cloud-based cron job to keep the service warm and responsive:
+- **Provider**: [cron-job.org](https://cron-job.org/) (free tier)
+- **Target URL**: `https://ai-diff-review.onrender.com/health`
+- **Schedule**: Every 10 minutes (`*/10 * * * *`)
+- **Action**: Pings `/health` to verify `200 OK` status and resets Render's idle timer.
+
 ### Submit a Review
 
 ```bash
