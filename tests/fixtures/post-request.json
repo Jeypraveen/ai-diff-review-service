@@ -1,0 +1,7 @@
+{
+  "diff": "diff --git a/test.js b/test.js\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,10 @@\n function process(input) {\n+  eval(input);\n+  const apiKey = \"abcdefghijklmnopqrst\";\n+  const q = \"SELECT * FROM users WHERE id = \" + userId;\n+  try { risky(); } catch (e) {}\n+  if (x == null) return;\n+  const copy = JSON.parse(JSON.stringify(obj));\n+  console.log(\"debug\");\n+  // TODO: fix this later\n   return input;\n }",
+  "options": {
+    "provider": "mock",
+    "maxFindings": 100
+  }
+}

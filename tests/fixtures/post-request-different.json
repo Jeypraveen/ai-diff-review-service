@@ -1,0 +1,7 @@
+{
+  "diff": "diff --git a/test.js b/test.js\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,4 @@\n function process(input) {\n+  console.log(\"different\");\n   return input;\n }",
+  "options": {
+    "provider": "mock",
+    "maxFindings": 100
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "ai-diff-review-service",
+  "version": "1.0.0",
+  "description": "AI-powered code diff review service with mock and LLM providers",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.3.3",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
