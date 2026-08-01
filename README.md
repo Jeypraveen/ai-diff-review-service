@@ -119,4 +119,4 @@ src/
 
 ## License
 
-Private — Xsolla Assessment Submission 
+Private - Xsolla Assessment Submission 
