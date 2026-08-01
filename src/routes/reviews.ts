@@ -61,7 +61,7 @@ export function registerReviewRoutes(app: FastifyInstance): void {
     // Per spec: 202 → { "jobId": "<opaque>", "status": "queued" }
     const responseBody: Record<string, unknown> = {
       jobId: review.jobId,
-      status: review.status,
+      status: cached ? review.status : 'queued',
     };
 
     // If cached, include findings and usage immediately
@@ -70,7 +70,7 @@ export function registerReviewRoutes(app: FastifyInstance): void {
       responseBody.usage = review.usage;
     }
 
-    const statusCode = cached ? 200 : 202;
+    const statusCode = 202; // Always return 202 Accepted per spec contract
 
     // Store idempotency response if key was provided
     const idempotencyKey = (request as any).idempotencyKey as string | undefined;
